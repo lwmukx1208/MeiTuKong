@@ -30,17 +30,22 @@ public class ListPersenterImpl implements IListPersenter {
 
     @Override
     public void getList(int pageNo, String type) {
-
+        mIListView.showLoading();
         iListModel.getList(pageNo, type, new FindListener<ITuBaBean>() {
             @Override
             public void onSuccess(List<ITuBaBean> list) {
-                Log.d("info", "list : " + list );
+                mIListView.hideLoading();
+                if(list == null || list.size() == 0){
+                    mIListView.showEmpty();
+                    return;
+                }
                 mIListView.setList(list);
             }
 
             @Override
             public void onError(int i, String s) {
-                Log.d("info", "error: " + s);
+                mIListView.hideLoading();
+                mIListView.showError();
             }
         });
     }
