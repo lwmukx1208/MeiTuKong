@@ -3,6 +3,10 @@
 使用MVP模式书写的一个美女图片展示app, 使用RecycleView 实现瀑布流效果
 
 ## 界面
+    
+<img src="ScreenCut/device-2016-01-06-212729.png" width="320" height="480" />
+<img src="ScreenCut/device-2016-01-06-212923.png" width="320" height="480" />
+<img src="ScreenCut/device-2016-01-06-212951.png"  width="320" height="480" />
 
 ## 使用到的库文件
     

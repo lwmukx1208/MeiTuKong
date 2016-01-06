@@ -1,10 +1,12 @@
 package org.fireking.meitukong;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import org.fireking.meitukong.bean.MainCategoryBean;
 import org.fireking.meitukong.model.UrlConst;
@@ -31,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/tjfsh.ttf");
         toolbar.setTitle("");
+        TextView title = (TextView) toolbar.findViewById(R.id.title);
+        title.setTypeface(typeface);
+        title.setText("美图控");
         setSupportActionBar(toolbar);
 
         mainPersenter = new MainPersenterImpl();
