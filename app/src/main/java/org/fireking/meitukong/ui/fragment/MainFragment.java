@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import org.fireking.meitukong.R;
 import org.fireking.meitukong.bean.ITuBaBean;
 import org.fireking.meitukong.persenter.IListPersenter;
 import org.fireking.meitukong.persenter.impl.ListPersenterImpl;
+import org.fireking.meitukong.supports.SpacesItemDecoration;
 import org.fireking.meitukong.ui.adapter.ListAdapter;
 import org.fireking.meitukong.ui.view.IListView;
 
@@ -24,6 +26,8 @@ import java.util.List;
 public class MainFragment extends Fragment implements IListView {
 
     private static final String ARG_PARAM1 = "cate";
+
+    private int pageNo = 0;
 
     private String mCategory;
 
@@ -71,11 +75,14 @@ public class MainFragment extends Fragment implements IListView {
         mIListPersenter = new ListPersenterImpl(mContext, this);
 
         recycle = (RecyclerView) getView().findViewById(R.id.recycle);
-        mListAdapter = new ListAdapter();
-        recycle.setHasFixedSize(true);
-        LinearLayoutManager manager = new LinearLayoutManager(mContext);
-        recycle.setLayoutManager(manager);
+        mListAdapter = new ListAdapter(mContext);
+        recycle.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
         recycle.setAdapter(mListAdapter);
+
+        SpacesItemDecoration decoration=new SpacesItemDecoration(8);
+        recycle.addItemDecoration(decoration);
+
+        mIListPersenter.getList(pageNo, mCategory);
     }
 
     @Override
@@ -100,6 +107,6 @@ public class MainFragment extends Fragment implements IListView {
 
     @Override
     public void setList(List<ITuBaBean> list) {
-
+        mListAdapter.append(list);
     }
 }

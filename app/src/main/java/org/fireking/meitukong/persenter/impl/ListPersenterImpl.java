@@ -1,6 +1,7 @@
 package org.fireking.meitukong.persenter.impl;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.fireking.meitukong.bean.ITuBaBean;
 import org.fireking.meitukong.model.IListModel;
@@ -33,12 +34,13 @@ public class ListPersenterImpl implements IListPersenter {
         iListModel.getList(pageNo, type, new FindListener<ITuBaBean>() {
             @Override
             public void onSuccess(List<ITuBaBean> list) {
+                Log.d("info", "list : " + list );
                 mIListView.setList(list);
             }
 
             @Override
             public void onError(int i, String s) {
-
+                Log.d("info", "error: " + s);
             }
         });
     }

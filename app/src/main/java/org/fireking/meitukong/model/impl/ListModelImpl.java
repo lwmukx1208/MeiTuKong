@@ -21,7 +21,7 @@ public class ListModelImpl implements IListModel {
 
     @Override
     public void getList(int pageNo, String type, FindListener<ITuBaBean> listener) {
-        BmobQuery<ITuBaBean> query = new BmobQuery<ITuBaBean>();
+        BmobQuery<ITuBaBean> query = new BmobQuery<>();
         query.addWhereEqualTo("type", type);
         query.setLimit(30);
         query.setSkip(pageNo * 30);

@@ -23,7 +23,6 @@ public class MainModelImpl implements MainModel {
         beans.add(new MainCategoryBean(UrlConst.MODEL, "模特魅影"));
         beans.add(new MainCategoryBean(UrlConst.START, "美女明星"));
         beans.add(new MainCategoryBean(UrlConst.BELLE, "美女写着"));
-        beans.add(new MainCategoryBean(UrlConst.RENYIYISHU, "人体艺术"));
         beans.add(new MainCategoryBean(UrlConst.MEINVTAOTU, "美女套图"));
         return beans;
     }
